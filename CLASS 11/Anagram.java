@@ -1,6 +1,5 @@
 import java.util.*;
-public class Anagram {
-    issue
+public class Anagram 
     String s1,s2;
         Anagram()
         {
