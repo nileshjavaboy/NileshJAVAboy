@@ -1,26 +1,56 @@
 import java.util.*;
-class kaprekar{
-    int p,q,f,A[];
-    kaprekar(int p1, int q1)
+public class kaprekar {
+    int p,q,a[],x;
+    kaprekar(int pp,int qq)
     {
-        p=p1;
-        q=q1;
-        f=0;
-        A = new int[q-p];
+        p=pp;
+        q=qq;
+        a=new int[50];
+        x=0;
     }
     public static Scanner sc = new Scanner(System.in);
-    public int digitcount(int n)
+    public int count(int m)
     {
-        int a,d=0,c=0;
-        a=n;
-        while(a>0)
-        {
-            d = a%10;
-            c=c+1;
-            a=a/10;
-        }
-        return c;
+        String s="";
+        s=Integer.toString(m);
+        return s.length();
     }
-    public boolean calculate(int n)
+    public void caldisp()
     {
+        int i,l,sq,y,lp,rp;
+        for(i=p;i<=q;i++)
+        {
+            l=this.count(i);  // current object under consideration 
+            sq=i*i;
+            y=(int)Math.pow(10, l);
+            lp=sq/y;
+            rp=sq%y;
+            if(lp+rp==i)
+            a[x++]=i;
+        }
+        if(x>0)
+        {
+            System.out.println("THE KAPREKAR NUMBERS ARE :");
+            for(i=0;i<x;i++)
+            {
+                if(i==x-1)
+                System.out.println(a[i]);
+                else
+                System.out.print(a[i]+",");
+            }
+            System.out.println("THE FREQUENCY OF KAPREKAR NUMBER IS :"+x);
+        }
+        else
+        System.out.println("OUTPUT:\t NO KAPREKAR NUMBER FOUND");
+    }
+    public static void main(String[] args) {
+        int pp,qq;
+        System.out.println("INPUT :");
+        System.out.print("p = ");
+        pp=sc.nextInt();
+        System.out.print("q = ");
+        qq=sc.nextInt();
+        kaprekar ob = new kaprekar(pp, qq);
+        ob.caldisp();
+    }
 }
